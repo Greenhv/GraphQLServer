@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+  graphqltestdb:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: green
+      POSTGRES_PASSWORD: green
+      POSTGRES_DB: graphqldb
+  workspace:
+    command: "npm run start"
+    build: .
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "4000:4000"
+    links:
+      - graphqltestdb
