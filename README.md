@@ -1,6 +1,6 @@
 # Simple GraphQL + NodeJs Server
 ## Setup
-Before anything you should create your .env file and fill the correspondly values. Just one thing, I recommend to use the PORT value defined in the docker-compose.yml, because i don't what kind of strange behaviour will have the app.
+Before anything you should create your .env file and fill the correspondly values. Just one thing, I recommend to use the **PORT** value defined in the docker-compose.yml, because i don't what kind of strange behaviour will have the app if you defined another PORT.
 
 So, after clearing that up, only code you need to run to have the server up and running are the following lines
 ```bash
