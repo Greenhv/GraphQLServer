@@ -11,7 +11,7 @@ This will map the server endpoint the **IP** 0.0.0.0 and to the **PORT** 3000. A
 All of this information is in the docker-compose.yml file in the repo, so in case you already have this ports im use then you can change then in this file too.
 
 ## Enviroment
-This repo only has a development environment working with:
+This repo only has a development environment working with the following technologies.
   * NodeJs
   * Babel
   * Express
