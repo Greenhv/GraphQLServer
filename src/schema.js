@@ -16,6 +16,10 @@ const typeDefs = `
   type Mutation {
     addComment(content: String!) : Comment
   }
+
+  type Subscription {
+    commentAdded : Comment
+  }
 `;
 
 const schema = makeExecutableSchema({ typeDefs, resolvers });
