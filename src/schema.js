@@ -15,6 +15,7 @@ const typeDefs = `
 
   type Mutation {
     addComment(content: String!) : Comment
+    deleteComment(id: ID) : Boolean
   }
 
   type Subscription {

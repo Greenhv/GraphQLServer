@@ -15,7 +15,7 @@ const resolvers = {
           createdAt: Date.now(),
           updatedAt: Date.now(),
         });
-        
+
         pubSub.publish('commentAdded', {
           commentAdded: newComment,
         });
@@ -25,9 +25,21 @@ const resolvers = {
         console.log(e.message);
       }
     },
+    deleteComment: async(root, { id }) => {
+      try {
+        const comment = await Db.models.comments.findById(id);
+        await comment.destroy();
+
+        return true;
+      } catch(e) {
+        console.log(e.message);
+      }
+    }
   },
   Subscription: {
-    commentAdded: () => pubSub.asyncIterator('commentAdded'),
+    commentAdded: {
+      subscribe: () => pubSub.asyncIterator('commentAdded'),
+    },
   }
 };
 
