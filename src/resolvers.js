@@ -27,12 +27,19 @@ const resolvers = {
     },
     deleteComment: async(root, { id }) => {
       try {
-        const comment = await Db.models.comments.findById(id);
-        await comment.destroy();
+        const comment = await Db.models.comment.findById(id);
+        if (comment) {
+          await comment.destroy();
 
-        return true;
+          pubSub.publish('commentDeleted', {
+            commentDeleted: comment,
+          });
+        }
+        else throw "The comment doesnt exist";
+
+        return comment;
       } catch(e) {
-        console.log(e.message);
+        console.log(e);
       }
     }
   },
@@ -40,7 +47,10 @@ const resolvers = {
     commentAdded: {
       subscribe: () => pubSub.asyncIterator('commentAdded'),
     },
-  }
+    commentDeleted: {
+      subscribe: () => pubSub.asyncIterator('commentDeleted'),
+    },
+  },
 };
 
 export default resolvers;

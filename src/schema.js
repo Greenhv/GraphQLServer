@@ -15,11 +15,12 @@ const typeDefs = `
 
   type Mutation {
     addComment(content: String!) : Comment
-    deleteComment(id: ID) : Boolean
+    deleteComment(id: ID) : Comment
   }
 
   type Subscription {
     commentAdded : Comment
+    commentDeleted : Comment
   }
 `;
 
